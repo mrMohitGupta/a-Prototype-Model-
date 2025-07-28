@@ -1,13 +1,28 @@
-from typing import List, Optional
+# SPDX-FileCopyrightText: 2015 Eric Larson
+#
+# SPDX-License-Identifier: Apache-2.0
 
-__version__ = "24.0"
+"""CacheControl import Interface.
 
+Make it easy to import from cachecontrol without long namespaces.
+"""
+__author__ = "Eric Larson"
+__email__ = "eric@ionrock.org"
+__version__ = "0.13.1"
 
-def main(args: Optional[List[str]] = None) -> int:
-    """This is an internal API only meant for use by pip's own console scripts.
+from pip._vendor.cachecontrol.adapter import CacheControlAdapter
+from pip._vendor.cachecontrol.controller import CacheController
+from pip._vendor.cachecontrol.wrapper import CacheControl
 
-    For additional details, see https://github.com/pypa/pip/issues/7498.
-    """
-    from pip._internal.utils.entrypoints import _wrapper
+__all__ = [
+    "__author__",
+    "__email__",
+    "__version__",
+    "CacheControlAdapter",
+    "CacheController",
+    "CacheControl",
+]
 
-    return _wrapper(args)
+import logging
+
+logging.getLogger(__name__).addHandler(logging.NullHandler())
